@@ -1,0 +1,30 @@
+import telepot
+import time
+robbe = 291655246
+augu = 196098030
+danjo = 134892235
+
+id1=robbe
+id2=augu
+
+def id1toid2(txt):
+    bot.sendMessage(id2, txt)
+    
+def id2toid1(txt):
+    bot.sendMessage(id1, txt)
+
+def on_chat_message(msg):
+    content_type, chat_type, chat_id = telepot.glance(msg)
+    if content_type == 'text':
+        name = msg["from"]["first_name"]
+        txt = msg['text']
+        if (chat_id == id1):id1toid2(txt)
+        if (chat_id == id2):id2toid1(txt)
+        print('ho ricevuto questo da ', name,'chat id(',chat_id,'):', txt)
+
+TOKEN = '997464842:AAGiQt4lHq47Wg-SQm_gOPwjXRS0hDNDrpw'  #idRob 291655246
+bot = telepot.Bot(TOKEN)
+bot.message_loop(on_chat_message)
+
+print('Listening ...')
+while 1: time.sleep(10)

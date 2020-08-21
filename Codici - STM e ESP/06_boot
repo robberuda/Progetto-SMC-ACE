@@ -1,0 +1,58 @@
+
+# This file is executed on every boot (including wake-boot from deepsleep)
+
+#import esp
+
+#esp.osdebug(None)
+
+import uos, machine
+from machine import Pin
+#uos.dupterm(None, 1) # disable REPL on UART(0)
+
+import gc
+
+import upip
+
+from time import sleep
+
+try:
+  import usocket as socket
+except:
+  import socket
+  
+#import webrepl
+
+#webrepl.start()
+
+led = Pin(2, Pin.OUT)
+
+gc.collect()
+
+#import network
+
+import esp
+esp.osdebug(None)
+
+import gc
+gc.collect()
+
+def connect():
+  ssid = 'ACUADORI'
+  password = 'm07f19rN!'
+
+  station = network.WLAN(network.STA_IF)
+
+  station.active(True)
+  station.connect(ssid, password)
+
+  while station.isconnected() == False:
+    led.value(not led.value())
+    sleep(0.1)
+    pass
+
+  print('Connection successful')
+  led.value(0)
+  print(station.ifconfig())
+  
+connect()
+

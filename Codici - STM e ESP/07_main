@@ -1,0 +1,11 @@
+
+import network
+
+
+TOKENcugibot = '913860726:AAGwrd3XgD2clUbDhJ2lRzdLSHOMRMQ1DC0'
+
+def blink ():
+  while True:
+    led.value(not led.value())
+    sleep(0.2)
+

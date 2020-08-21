@@ -1,0 +1,41 @@
+import telepot
+import time
+
+TOKENcugibot = '913860726:AAGwrd3XgD2clUbDhJ2lRzdLSHOMRMQ1DC0'
+TOKENsecretcontact = '960124828:AAFQXSV_Be2ltcR1C0NBjP3Xwx8N5-AD63A'
+
+
+robbe =291655246
+augu = 196098030
+danjo =134892235
+zeri = 000000000
+
+id1=zeri
+id2=zeri
+
+def scanner(msg):
+    scan = str(msg["from"]["first_name"])+" "+str(msg["from"]["last_name"])+' chat_id('+str(msg["chat"]["id"])+') ha scritto: '+str(msg['text'])
+    bot.sendMessage(robbe,scan)
+    print(scan)
+    
+def id1toid2(txt):
+    bot.sendMessage(id2, txt)
+    
+def id2toid1(txt):
+    bot.sendMessage(id1, txt)
+
+def on_chat_message(msg):
+    content_type, chat_type, chat_id = telepot.glance(msg)
+    if content_type == 'text':
+        txt = msg['text']
+        if (chat_id == id1):id1toid2(txt)
+        if (chat_id == id2):id2toid1(txt)
+        scanner(msg)
+        
+
+bot = telepot.Bot(TOKENcugibot)
+bot.message_loop(on_chat_message)
+bot.sendMessage(augu, 'bot attivo ...')
+print('Listening ...')
+
+while 1: time.sleep(10)
