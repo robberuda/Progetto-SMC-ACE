@@ -20,8 +20,8 @@
 
 /*
 // Initialize Wifi connection to the router 
-const char* ssid     = "ACUADORI"; 
-const char* password = "m07f19rN!";
+const char* ssid     = "cuginet"; 
+const char* password = "cugicugimilitari!";
 */
 
 //INIZIALIZZAZIONE BOT TELEGRAM:
